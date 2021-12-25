@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {SHOPPINGLISTS} from "../../mock/shopping-lists-mock";
 
 @Component({
   selector: 'app-shopping-lists',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShoppingListsComponent implements OnInit {
 
-  constructor() { }
+  lists = SHOPPINGLISTS
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
