@@ -8,7 +8,9 @@
   </button>
 
   <div slot="content">
-    <app-add-shopping-list-form *ngIf="formIsVisible" (onSubmit)="addList($event)"></app-add-shopping-list-form>
+    <app-add-shopping-list-form *ngIf="formIsVisible"
+                                (onSubmit)="addList($event)"
+                                (onClose)="toggleForm()"></app-add-shopping-list-form>
     <app-shopping-list *ngFor="let list of lists" [list]="list" (onDeleteList)="removeList(list)"></app-shopping-list>
   </div>
 </app-page>

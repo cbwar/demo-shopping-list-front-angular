@@ -10,6 +10,7 @@ import {ShoppingList} from "../../model/ShoppingList";
 export class AddShoppingListFormComponent implements OnInit {
 
   @Output() onSubmit: EventEmitter<ShoppingList> = new EventEmitter<ShoppingList>()
+  @Output() onClose = new EventEmitter()
   name: string = ''
 
   constructor() {

@@ -1,5 +1,10 @@
 <div class="card mb-3">
-  <h5 class="card-header">New list</h5>
+  <h5 class="card-header">New list
+    <div class="float-end btn-group btn-group-sm">
+      <button class="btn btn-outline-secondary" (click)="onClose.emit()">
+        <i class="fas fa-times"></i></button>
+    </div>
+  </h5>
   <div class="card-body">
     <form (ngSubmit)="submit()">
       <div class="mb-3">
