@@ -20,7 +20,9 @@
       <td>{{ item.product.name }}</td>
       <td>{{ item.quantity }}</td>
       <td class="text-end">
-        <button class="btn btn-outline-danger btn-sm"><i class="fa fa-trash-alt"></i></button>
+        <button class="btn btn-outline-danger btn-sm" *ngIf="item.id"
+                (click)="removeItem(item.id)">
+          <i class="fa fa-trash-alt"></i></button>
       </td>
     </tr>
     </tbody>

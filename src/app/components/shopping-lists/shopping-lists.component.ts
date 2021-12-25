@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {SHOPPINGLISTS} from "../../mock/shopping-lists-mock";
+import {ShoppingListService} from "../../services/shopping-list.service";
+import {ShoppingList} from "../../model/ShoppingList";
 
 @Component({
   selector: 'app-shopping-lists',
@@ -8,12 +9,15 @@ import {SHOPPINGLISTS} from "../../mock/shopping-lists-mock";
 })
 export class ShoppingListsComponent implements OnInit {
 
-  lists = SHOPPINGLISTS
+  lists: ShoppingList[] = []
 
-  constructor() {
+  constructor(private service: ShoppingListService) {
   }
 
   ngOnInit(): void {
+    this.service.getLists().subscribe((lists) => {
+      this.lists = lists
+    })
   }
 
 }
