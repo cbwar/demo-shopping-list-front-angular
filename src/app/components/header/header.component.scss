@@ -1,0 +1,24 @@
+@import "../../../css/variables";
+
+.bg-nav {
+  background-color: $color-main;
+}
+
+.navbar-brand {
+  display: flex !important;
+  align-items: center;
+}
+
+.brand-logo {
+  display: inline-block;
+  border: 2px solid white;
+  border-radius: 50%;
+  margin-right: 10px;
+  background-color: rgb(105, 204, 211);
+}
+
+.nav-item.active {
+  background-color: #5c2e62;
+  color: black;
+  border-radius: 10px 5px 10px 0;
+}

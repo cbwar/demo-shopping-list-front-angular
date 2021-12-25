@@ -1,0 +1,21 @@
+// Typography
+$font-size-base: 0.875rem;
+$line-height-base: 1.1;
+
+@media (min-width: 768px) {
+    $font-size-base: 0.675rem;
+    $line-height-base: 1.0;
+}
+
+// Colors
+$color-main: #132431;
+$color-main-light: lighten($color-main, 10%);
+$color-main-dark: darken($color-main, 10%);
+$color-comp: #007bff;
+$color-comp-light: lighten($color-comp, 10%);
+$color-comp-dark: darken($color-comp, 10%);
+$color-bg: #eaeaea;
+
+// Override bootstrap colors
+$primary: $color-comp-light;
+$component-active-bg: $color-comp-dark;
