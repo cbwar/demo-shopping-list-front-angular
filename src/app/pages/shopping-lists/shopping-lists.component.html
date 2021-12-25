@@ -6,5 +6,5 @@
   <button slot="actions" class="btn btn-secondary" (click)="fetchLists()">
     <i class="fas fa-sync"></i>
   </button>
-  <app-shopping-list slot="content" *ngFor="let list of lists" [list]="list"></app-shopping-list>
+  <app-shopping-list slot="content" *ngFor="let list of lists" [list]="list" (onDeleteList)="removeList(list)"></app-shopping-list>
 </app-page>

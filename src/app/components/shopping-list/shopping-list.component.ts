@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ShoppingList} from "../../model/ShoppingList";
 import {ShoppingListService} from "../../services/shopping-list.service";
 import {alert, confirm} from "../../utils";
@@ -11,6 +11,7 @@ import {alert, confirm} from "../../utils";
 export class ShoppingListComponent implements OnInit {
 
   @Input() list: ShoppingList | undefined
+  @Output() onDeleteList: EventEmitter<ShoppingList> = new EventEmitter()
 
   constructor(private shoppingListService: ShoppingListService) {
   }
@@ -38,6 +39,18 @@ export class ShoppingListComponent implements OnInit {
           this.fetchList()
           alert('Item deleted')
         })
+      }
+    })
+
+  }
+
+  remove() {
+    confirm('Delete', 'Delete list ?').then((result) => {
+      if (result.isConfirmed) {
+        if (!this.list) {
+          return
+        }
+        this.onDeleteList.emit(this.list)
       }
     })
 

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ShoppingListService} from "../../services/shopping-list.service";
 import {ShoppingList} from "../../model/ShoppingList";
+import {alert} from "../../utils";
 
 @Component({
   selector: 'app-shopping-lists',
@@ -27,4 +28,12 @@ export class ShoppingListsComponent implements OnInit {
   addList() {
     console.log('add list clicked')
   }
+
+  removeList(list: ShoppingList) {
+    this.service.remove(list).subscribe(() => {
+      alert('List deleted successfully')
+      this.fetchLists()
+    })
+  }
+
 }

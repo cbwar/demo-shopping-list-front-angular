@@ -25,4 +25,8 @@ export class ShoppingListService {
   removeItem(list: ShoppingList, itemId: number) {
     return this.listItemService.remove(itemId)
   }
+
+  remove(list: ShoppingList) {
+    return this.http.delete(`${this.apiUrl}/${list.id}.json`)
+  }
 }
