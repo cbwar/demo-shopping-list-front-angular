@@ -3,7 +3,7 @@ import {ShoppingListItem} from "./ShoppingListItem";
 
 export interface ShoppingList {
   id?: number
-  name?: string
-  createdAt?: Moment
+  name: string
+  createdAt: Moment
   items: Array<ShoppingListItem>
 }
