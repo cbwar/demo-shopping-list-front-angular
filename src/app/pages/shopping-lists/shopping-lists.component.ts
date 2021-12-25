@@ -15,9 +15,16 @@ export class ShoppingListsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.fetchLists()
+  }
+
+  fetchLists() {
     this.service.getLists().subscribe((lists) => {
       this.lists = lists
     })
   }
 
+  addList() {
+    console.log('add list clicked')
+  }
 }
