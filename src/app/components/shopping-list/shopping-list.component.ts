@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ShoppingList} from "../../model/ShoppingList";
 import {ShoppingListService} from "../../services/shopping-list.service";
-import {confirm} from "../../utils";
+import {alert, confirm} from "../../utils";
 
 @Component({
   selector: 'app-shopping-list',
@@ -36,6 +36,7 @@ export class ShoppingListComponent implements OnInit {
         this.shoppingListService.removeItem(this.list, id).subscribe(() => {
           console.log('Deleted ' + id)
           this.fetchList()
+          alert('Item deleted')
         })
       }
     })

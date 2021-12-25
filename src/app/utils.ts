@@ -1,4 +1,4 @@
-import Swal from 'sweetalert2'
+import Swal, {SweetAlertIcon} from 'sweetalert2'
 
 export function confirm(title: string, content: string) {
   return Swal.fire({
@@ -11,4 +11,15 @@ export function confirm(title: string, content: string) {
     confirmButtonText: 'Yes',
     cancelButtonText: 'No',
   })
+}
+
+export function alert(message: string, icon: SweetAlertIcon = 'info') {
+  Swal.fire({
+    icon: icon,
+    html: message,
+    showCloseButton: false,
+    showCancelButton: false,
+    focusConfirm: false,
+    confirmButtonText: 'Ok',
+  }).then()
 }
