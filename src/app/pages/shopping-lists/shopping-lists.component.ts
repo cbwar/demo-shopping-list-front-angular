@@ -10,6 +10,7 @@ import {alert} from "../../utils";
 })
 export class ShoppingListsComponent implements OnInit {
 
+  formIsVisible = false
   lists: ShoppingList[] = []
 
   constructor(private service: ShoppingListService) {
@@ -25,8 +26,14 @@ export class ShoppingListsComponent implements OnInit {
     })
   }
 
-  addList() {
+  addList(list: ShoppingList) {
     console.log('add list clicked')
+    console.log(list)
+    this.service.addList(list).subscribe(() => {
+      alert('List added successfully')
+      this.toggleForm()
+      this.fetchLists()
+    })
   }
 
   removeList(list: ShoppingList) {
@@ -36,4 +43,7 @@ export class ShoppingListsComponent implements OnInit {
     })
   }
 
+  toggleForm() {
+    this.formIsVisible = !this.formIsVisible
+  }
 }

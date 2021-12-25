@@ -1,10 +1,14 @@
 <app-page [title]="'My lists'">
-  <button slot="actions" class="btn btn-secondary" (click)="addList()">
+  <button slot="actions" class="btn btn-secondary" (click)="toggleForm()">
     <i class="fas fa-plus"></i>
     New list
   </button>
   <button slot="actions" class="btn btn-secondary" (click)="fetchLists()">
     <i class="fas fa-sync"></i>
   </button>
-  <app-shopping-list slot="content" *ngFor="let list of lists" [list]="list" (onDeleteList)="removeList(list)"></app-shopping-list>
+
+  <div slot="content">
+    <app-add-shopping-list-form *ngIf="formIsVisible" (onSubmit)="addList($event)"></app-add-shopping-list-form>
+    <app-shopping-list *ngFor="let list of lists" [list]="list" (onDeleteList)="removeList(list)"></app-shopping-list>
+  </div>
 </app-page>

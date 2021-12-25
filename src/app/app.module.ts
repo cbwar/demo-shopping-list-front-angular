@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {HttpClientModule} from "@angular/common/http";
+import {FormsModule} from "@angular/forms";
 
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './components/header/header.component';
@@ -9,6 +10,7 @@ import {ShoppingListComponent} from './components/shopping-list/shopping-list.co
 import {MainComponent} from './components/main/main.component';
 import {PageComponent} from './components/page/page.component';
 import {ShoppingListsComponent} from "./pages/shopping-lists/shopping-lists.component";
+import {AddShoppingListFormComponent} from './components/add-shopping-list-form/add-shopping-list-form.component';
 
 @NgModule({
   declarations: [
@@ -18,11 +20,13 @@ import {ShoppingListsComponent} from "./pages/shopping-lists/shopping-lists.comp
     ShoppingListComponent,
     ShoppingListsComponent,
     MainComponent,
-    PageComponent
+    PageComponent,
+    AddShoppingListFormComponent,
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

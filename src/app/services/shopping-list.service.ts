@@ -29,4 +29,8 @@ export class ShoppingListService {
   remove(list: ShoppingList) {
     return this.http.delete(`${this.apiUrl}/${list.id}.json`)
   }
+
+  addList(list: ShoppingList) {
+    return this.http.post(`${this.apiUrl}`, list)
+  }
 }
