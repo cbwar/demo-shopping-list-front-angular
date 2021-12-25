@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col main-top">
+      <div class="main-top-left">
+        <h1>{{ title }}</h1>
+      </div>
+      <div class="main-top-right">
+        <div class="btn-group btn-group-sm">
+          <ng-content select="[slot=action]"></ng-content>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row main-content">
+    <div class="main col">
+      <div class="container-fluid mt-4">
+        <!-- Page contents -->
+        <ng-content select="[slot=content]"></ng-content>
+      </div>
+    </div>
+  </div>
+</div>

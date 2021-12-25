@@ -1,0 +1,9 @@
+<app-page [title]="'My lists'">
+  <button slot="action" class="btn btn-secondary">
+    <i class="fas fa-plus"></i>
+    New list
+  </button>
+  <app-shopping-list slot="content" *ngFor="let list of lists" [list]="list"></app-shopping-list>
+</app-page>
+
+

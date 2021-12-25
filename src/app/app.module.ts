@@ -6,8 +6,9 @@ import {AppComponent} from './app.component';
 import {HeaderComponent} from './components/header/header.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {ShoppingListComponent} from './components/shopping-list/shopping-list.component';
-import {ShoppingListsComponent} from './components/shopping-lists/shopping-lists.component';
 import {MainComponent} from './components/main/main.component';
+import {PageComponent} from './components/page/page.component';
+import {ShoppingListsComponent} from "./pages/shopping-lists/shopping-lists.component";
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {MainComponent} from './components/main/main.component';
     FooterComponent,
     ShoppingListComponent,
     ShoppingListsComponent,
-    MainComponent
+    MainComponent,
+    PageComponent
   ],
   imports: [
     BrowserModule,
