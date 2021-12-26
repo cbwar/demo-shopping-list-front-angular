@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ShoppingListService} from "../../services/shopping-list.service";
 import {ShoppingList} from "../../model/ShoppingList";
 import {alert} from "../../utils";
+import {ShoppingListItem} from "../../model/ShoppingListItem";
+import {ShoppingListItemsService} from "../../services/shopping-list-items.service";
 
 @Component({
   selector: 'app-shopping-lists',
@@ -13,7 +15,7 @@ export class ShoppingListsComponent implements OnInit {
   formIsVisible = false
   lists: ShoppingList[] = []
 
-  constructor(private service: ShoppingListService) {
+  constructor(private service: ShoppingListService, private itemService: ShoppingListItemsService) {
   }
 
   ngOnInit(): void {
@@ -21,7 +23,7 @@ export class ShoppingListsComponent implements OnInit {
   }
 
   fetchLists() {
-    this.service.getLists().subscribe((lists) => {
+    this.service.all().subscribe((lists) => {
       this.lists = lists
     })
   }
@@ -29,7 +31,7 @@ export class ShoppingListsComponent implements OnInit {
   addList(list: ShoppingList) {
     console.log('add list clicked')
     console.log(list)
-    this.service.addList(list).subscribe(() => {
+    this.service.add(list).subscribe(() => {
       alert('List added successfully')
       this.toggleForm()
       this.fetchLists()

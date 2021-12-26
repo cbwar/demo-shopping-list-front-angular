@@ -2,6 +2,8 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ShoppingList} from "../../model/ShoppingList";
 import {ShoppingListService} from "../../services/shopping-list.service";
 import {alert, confirm} from "../../utils";
+import {ShoppingListItem, ShoppingListItemCreate} from "../../model/ShoppingListItem";
+import {ShoppingListItemsService} from "../../services/shopping-list-items.service";
 
 @Component({
   selector: 'app-shopping-list',
@@ -10,10 +12,14 @@ import {alert, confirm} from "../../utils";
 })
 export class ShoppingListComponent implements OnInit {
 
+  formIsVisible = false
   @Input() list: ShoppingList | undefined
   @Output() onDeleteList: EventEmitter<ShoppingList> = new EventEmitter()
+  quantity: number = 1;
+  productId: number = 0;
 
-  constructor(private shoppingListService: ShoppingListService) {
+  constructor(private shoppingListService: ShoppingListService,
+              private itemService: ShoppingListItemsService) {
   }
 
   ngOnInit(): void {
@@ -23,7 +29,7 @@ export class ShoppingListComponent implements OnInit {
     if (!this.list || !this.list.id) {
       return
     }
-    this.shoppingListService.getList(this.list.id).subscribe((list) => {
+    this.shoppingListService.get(this.list.id).subscribe((list) => {
       this.list = list
     })
   }
@@ -34,14 +40,12 @@ export class ShoppingListComponent implements OnInit {
         if (!this.list) {
           return
         }
-        this.shoppingListService.removeItem(this.list, id).subscribe(() => {
-          console.log('Deleted ' + id)
-          this.fetchList()
+        this.itemService.remove(id).subscribe(() => {
           alert('Item deleted')
+          this.fetchList()
         })
       }
     })
-
   }
 
   remove() {
@@ -54,5 +58,34 @@ export class ShoppingListComponent implements OnInit {
       }
     })
 
+  }
+
+  toggleForm() {
+    this.formIsVisible = !this.formIsVisible
+  }
+
+  addItem() {
+    if (!this.productId) {
+      alert('Product is required')
+      return
+    }
+    if (this.quantity <= 0) {
+      alert('Quantity is required')
+      return
+    }
+    if (!this.list) {
+      return
+    }
+    const item: ShoppingListItemCreate = {
+      quantity: this.quantity,
+      product: `/api/products/${this.productId}`,
+      list: `/api/shopping_lists/${this.list.id}`,
+    }
+    this.itemService.add(item).subscribe(() => {
+      alert('Item added')
+      this.fetchList()
+      this.productId = 0
+      this.quantity = 1
+    })
   }
 }

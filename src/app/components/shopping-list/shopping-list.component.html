@@ -2,7 +2,7 @@
   <h5 class="card-header">
     {{ list.name }}
     <div class="float-end btn-group btn-group-sm">
-      <button class="btn btn-secondary"><i class="fas fa-plus"></i></button>
+      <button class="btn btn-secondary" (click)="toggleForm()"><i class="fas fa-plus"></i></button>
       <button class="btn btn-outline-danger" (click)="remove()">
         <i class="fas fa-trash-alt"></i>
       </button>
@@ -29,6 +29,19 @@
     </tr>
     </tbody>
 
+    <tfoot>
+    <tr *ngIf="formIsVisible">
+      <td>
+        <app-product-select [selectedId]="productId" (onChange)="productId=$event"></app-product-select>
+      </td>
+      <td>
+        <input type="number" class="form-control" name="quantity" size="1" [(ngModel)]="quantity">
+      </td>
+      <td class="text-end">
+        <button class="btn btn-primary btn-sm text-white" (click)="addItem()">Add</button>
+      </td>
+    </tr>
+    </tfoot>
 
   </table>
 </div>

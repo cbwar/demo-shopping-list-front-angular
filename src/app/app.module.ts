@@ -11,6 +11,7 @@ import {MainComponent} from './components/main/main.component';
 import {PageComponent} from './components/page/page.component';
 import {ShoppingListsComponent} from "./pages/shopping-lists/shopping-lists.component";
 import {AddShoppingListFormComponent} from './components/add-shopping-list-form/add-shopping-list-form.component';
+import { ProductSelectComponent } from './components/product-select/product-select.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {AddShoppingListFormComponent} from './components/add-shopping-list-form/
     MainComponent,
     PageComponent,
     AddShoppingListFormComponent,
+    ProductSelectComponent,
   ],
   imports: [
     BrowserModule,

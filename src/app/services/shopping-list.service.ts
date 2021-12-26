@@ -3,6 +3,7 @@ import {ShoppingList} from "../model/ShoppingList";
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {ShoppingListItemsService} from "./shopping-list-items.service";
+import {ShoppingListItem} from "../model/ShoppingListItem";
 
 @Injectable({
   providedIn: 'root'
@@ -14,23 +15,20 @@ export class ShoppingListService {
   constructor(private http: HttpClient, private listItemService: ShoppingListItemsService) {
   }
 
-  getList(id: number) {
+  get(id: number) {
     return this.http.get<ShoppingList>(`${this.apiUrl}/${id}.json`)
   }
 
-  getLists() {
+  all() {
     return this.http.get<ShoppingList[]>(`${this.apiUrl}.json`)
-  }
-
-  removeItem(list: ShoppingList, itemId: number) {
-    return this.listItemService.remove(itemId)
   }
 
   remove(list: ShoppingList) {
     return this.http.delete(`${this.apiUrl}/${list.id}.json`)
   }
 
-  addList(list: ShoppingList) {
+  add(list: ShoppingList) {
     return this.http.post(`${this.apiUrl}`, list)
   }
+
 }
